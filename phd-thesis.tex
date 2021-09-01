@@ -1,11 +1,46 @@
 \documentclass[12pt,a4paper,openright,twoside]{book}
 \usepackage[utf8]{inputenc}
 \usepackage{phd-thesis}
-\usepackage{code-lstlistings}
 \usepackage{notes}
 \usepackage{shortcuts}
 % cleveref allows for \Cref{} style references, that print the name of the referenced object. Must be loaded last. 
+\usepackage{listings}
+\usepackage{xcolor}
 \usepackage{cleveref}
+
+\crefname{lstlisting}{listing}{listing}	
+\Crefname{lstlisting}{Listing}{Listing}
+\renewcommand\lstlistlistingname{List of Listings}
+
+\lstset{
+	showstringspaces=false,
+	basicstyle=\scriptsize\ttfamily,
+	commentstyle={\color{olive}},
+	identifierstyle=\color{black},
+	ndkeywordstyle={\color{blue}},
+	stringstyle={\color{magenta}},
+	emphstyle={},
+	keywordstyle={\color{blue}},
+	breaklines=true,
+	numbers=left,
+	numberstyle=\tiny\color{gray},
+	numbersep=10pt,
+	tabsize=2,
+	extendedchars=true,
+	frame=trBL,
+	frameround=fttt,
+}
+
+\lstdefinelanguage{Kotlin}{
+	comment=[l]{//},
+	emph={delegate, filter, first, firstOrNull, forEach, lazy, map, mapNotNull, println, return@},
+	keywords={abstract, actual, as, as?, break, by, class, companion, continue, data, do, dynamic, else, enum, expect, false, final, for, fun, get, if, import, in, interface, internal, is, null, object, override, package, private, public, return, set, super, suspend, this, throw, true, try, typealias, val, var, vararg, when, where, while},
+	morecomment=[s]{/*}{*/},
+	morestring=[b]",
+	morestring=[s]{"""*}{*"""},
+	ndkeywords={@Deprecated, @JvmField, @JvmName, @JvmOverloads, @JvmStatic, @JvmSynthetic, Array, Byte, Double, Float, Int, Integer, Iterable, Long, Runnable, Short, String, Unit, it},
+	sensitive=true
+}
 
 \school{\unibo}
 \programme{Dottorato di Ricerca in Data Science and Computation}
