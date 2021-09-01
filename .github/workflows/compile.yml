@@ -19,7 +19,7 @@ jobs:
         shell: bash
         run: git fetch --tags -f
       - name: Compile LaTeX
-        uses: DanySK/compile-latex-action@0.2.6
+        uses: DanySK/compile-latex-action@0.2.8
         id: compile
       - name: Autotag
         uses: DanySK/semver-autotag-action@master
@@ -28,13 +28,12 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          FILE_LIST="${{ steps.compile.outputs.success-list }}"
           echo "These files will be published:
-          $FILE_LIST"
-          [ -n "$FILE_LIST=" ] || false
+          $LATEX_SUCCESSES"
+          [ -n "$LATEX_SUCCESSES=" ] || exit 1
           TAG=$(git describe --tags --exact-match HEAD)
           hub release create -m "$(git tag -l --format='%(contents)' "$TAG")" "$TAG" || true
-          for file in $FILE_LIST; do
+          for file in $LATEX_SUCCESSES; do
             pdf="${file%.*}.pdf"
             echo "Delivering file $pdf"
             gh release upload "$TAG" "$pdf" --clobber
