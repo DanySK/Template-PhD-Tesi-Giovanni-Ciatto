@@ -18,10 +18,8 @@ jobs:
       - name: Fetch tags
         shell: bash
         run: git fetch --tags -f
-      - name: Install TeXLive
-        uses: DanySK/setup-texlive-action@master
       - name: Compile LaTeX
-        uses: DanySK/compile-latex-action@master
+        uses: DanySK/compile-latex-action@0.1.15
       - name: Autotag
         uses: DanySK/semver-autotag-action@master
       - name: Deploy
