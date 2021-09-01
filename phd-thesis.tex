@@ -68,6 +68,11 @@ I suggest referencing stuff as follows: \cref{fig:random-image} or \Cref{fig:ran
     \label{fig:random-image}
 \end{figure}
 
+References to URLs are better stored in footnotes\footnote{
+\url{https://danysk.github.io/2020/05/08/bibliography/}
+},
+leaving the bibliography only for papers such as \cite{LevesqueB87}.
+
 \section{Some cool topic}
 
 \part{Second Part}
@@ -88,7 +93,6 @@ You may also put some code snippet (which is NOT float by default), eg: \cref{ls
 
 \part*{}
 
-\nocite{*} % comment this to only show the referenced entries from the .bib file
 \bibliographystyle{alpha}
 \bibliography{phd-thesis}
 
