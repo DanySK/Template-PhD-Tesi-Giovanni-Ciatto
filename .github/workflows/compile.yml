@@ -19,7 +19,7 @@ jobs:
         shell: bash
         run: git fetch --tags -f
       - name: Compile LaTeX
-        uses: DanySK/compile-latex-action@0.2.8
+        uses: DanySK/compile-latex-action@0.2.9
         id: compile
       - name: Autotag
         uses: DanySK/semver-autotag-action@master
